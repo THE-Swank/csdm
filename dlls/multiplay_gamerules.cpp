@@ -707,7 +707,11 @@ void CHalfLifeMultiplay::DeathNotice( CBasePlayer *pVictim, entvars_t *pKiller, 
 		if ( pPlayer->LastKill < gpGlobals->time - 20 )
 			pPlayer->Kills = 0;
 
-		pPlayer->Kills ++;
+		pPlayer->Kills++;
+        if (killer_weapon_name == "knife")
+            pPlayer->TakeHealth(50.0f, DMG_GENERIC);
+        else
+            pPlayer->TakeHealth(10.0f, DMG_GENERIC);
 
 		if( !FirstBlood )
 		{
@@ -715,10 +719,10 @@ void CHalfLifeMultiplay::DeathNotice( CBasePlayer *pVictim, entvars_t *pKiller, 
 			FirstBlood = true;
 		}
 
-		else if( HeadShot )
+		else if( HeadShot ) {
+            pPlayer->TakeHealth(20.0f, DMG_GENERIC);
 			EMIT_SOUND(pPlayer->edict(), CHAN_ITEM, "qs/headshot.wav", 1, ATTN_NONE);
-
-		else if(  pPlayer->Kills == 2 )
+        } else if(  pPlayer->Kills == 2 )
 			EMIT_SOUND(pPlayer->edict(), CHAN_ITEM, "qs/dominating.wav", 1, ATTN_NONE);
 
 		else if(  pPlayer->Kills == 3 )
