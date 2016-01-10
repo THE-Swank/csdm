@@ -734,9 +734,11 @@ void CHalfLifeMultiplay::DeathNotice( CBasePlayer *pVictim, entvars_t *pKiller, 
 		else if(  pPlayer->Kills == 5 )
 			EMIT_SOUND(pPlayer->edict(), CHAN_ITEM, "qs/ultrakill.wav", 1, ATTN_NONE);
 
-		else if( pPlayer->Kills > 5 )
+		else if( pPlayer->Kills == 5 )
 			EMIT_SOUND(pPlayer->edict(), CHAN_ITEM, "qs/monsterkill.wav", 1, ATTN_NONE);
 
+		else if( pPlayer->Kills > 5 )
+			EMIT_SOUND(pPlayer->edict(), CHAN_ITEM, "qs/rampage.wav", 1, ATTN_NONE);
 
 		pPlayer->LastKill = gpGlobals->time;
 

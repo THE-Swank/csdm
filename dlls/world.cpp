@@ -485,6 +485,7 @@ void CWorld :: Precache( void )
 	PRECACHE_SOUND("qs/godlike.wav");
 	PRECACHE_SOUND("qs/ultrakill.wav");
 	PRECACHE_SOUND("qs/firstblood.wav");
+	PRECACHE_SOUND("qs/rampage.wav");
 	// QS SOUND END
 
 	// WATER SPLASH
